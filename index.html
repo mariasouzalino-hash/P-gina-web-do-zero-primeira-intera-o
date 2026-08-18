@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo da Selva - Blog da Fauna Tropical</title>
+  
+  <!-- Vinculação do arquivo de estilos externos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <!-- Cabeçalho Principal -->
+  <header class="header">
+    <div class="header-content">
+      <h1>Mundo da Selva 🌿</h1>
+      <p>Explorando os mistérios e a beleza da vida selvagem</p>
+    </div>
+  </header>
+
+  <!-- Navegação Principal -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html" class="active">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo Principal do Blog -->
+  <main class="container">
+    
+    <!-- Artigo 1: Onça-Pintada -->
+    <article class="card">
+      <span class="badge">Felinos</span>
+      <h2>A Onça-Pintada: A Rainha da Selva</h2>
+      
+      <!-- Substitua o caminho da imagem se tiver uma pasta "images/" -->
+      <img src="images/onca.jpg" alt="Foto de uma Onça-Pintada na floresta" class="card-img" onerror="this.src='https://via.placeholder.com/800x400?text=On%C3%A7a-Pintada'">
+      
+      <p>A onça-pintada é o maior felino do continente americano. Com sua mordida extremamente forte, ela é capaz de perfurar até cascas duras de répteis.</p>
+      
+      <button class="btn" onclick="mostrarCuriosidade('curiosidade-onca')">Ver Curiosidade</button>
+      
+      <div id="curiosidade-onca" class="curiosidade">
+        💡 <strong>Você sabia?</strong> Diferente de muitos felinos domésticos, as onças-pintadas adoram água e são excelentes nadadoras!
+      </div>
+    </article>
+
+    <!-- Artigo 2: Lêmure -->
+    <article class="card">
+      <span class="badge">Primatas</span>
+      <h2>O Lêmure: Os Guardiões de Madagascar</h2>
+      
+      <img src="images/lemure.jpg" alt="Foto de um Lêmure" class="card-img" onerror="this.src='https://via.placeholder.com/800x400?text=L%C3%AAmure'">
+      
+      <p>Encontrados exclusivamente na ilha de Madagascar, os lêmures têm papéis ecológicos fundamentais como dispersores de sementes nas florestas tropicais.</p>
+      
+      <button class="btn" onclick="mostrarCuriosidade('curiosidade-lemure')">Ver Curiosidade</button>
+      
+      <div id="curiosidade-lemure" class="curiosidade">
+        💡 <strong>Você sabia?</strong> Algumas espécies de lêmures usam cantos e vocalizações em grupo para delimitar seu território na selva.
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2026 Mundo da Selva - Criando tecnologia e compartilhando conhecimento.</p>
+  </footer>
+
+  <!-- Vinculação do arquivo de script interativo -->
+  <script src="script.js"></script>
+</body>
+</html>
