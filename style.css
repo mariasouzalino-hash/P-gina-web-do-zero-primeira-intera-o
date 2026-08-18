@@ -1,1 +1,195 @@
+/* ==========================================================================
+   Configurações Gerais e Reset Básico
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f5f3;
+  color: #2b3a2f;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Cabeçalho (Header)
+   ========================================================================== */
+.header {
+  background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+  color: #ffffff;
+  padding: 3rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  color: #d8f3dc;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   Barra de Navegação (Navbar)
+   ========================================================================== */
+.navbar {
+  background-color: #081c15;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar li a {
+  display: block;
+  color: #e9f5ec;
+  text-decoration: none;
+  padding: 0.9rem 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+  background-color: #52b788;
+  color: #081c15;
+}
+
+/* ==========================================================================
+   Layout Principal e Cards
+   ========================================================================== */
+.container {
+  max-width: 800px;
+  margin: 2.5rem auto;
+  padding: 0 1.2rem;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e7e1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.badge {
+  display: inline-block;
+  background-color: #d8f3dc;
+  color: #1b4332;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+}
+
+.card h2 {
+  color: #1b4332;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.card-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+}
+
+.card p {
+  color: #4a5d4e;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Botões e Interatividade
+   ========================================================================== */
+.btn {
+  background-color: #2d6a4f;
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #1b4332;
+}
+
+.curiosidade {
+  display: none;
+  margin-top: 1.2rem;
+  padding: 1rem;
+  background-color: #e9f5ec;
+  border-left: 5px solid #52b788;
+  border-radius: 4px;
+  color: #1b4332;
+  font-size: 0.98rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Rodapé (Footer)
+   ========================================================================== */
+.footer {
+  background-color: #1b4332;
+  color: #d8f3dc;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Ajustes Responsivos (Dispositivos Móveis)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .header-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .card-img {
+    height: 220px;
+  }
+  
+  .card {
+    padding: 1.2rem;
+  }
+}
