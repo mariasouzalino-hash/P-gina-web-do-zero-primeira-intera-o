@@ -3,74 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mundo da Selva - Blog da Fauna Tropical</title>
-  
-  <!-- Vinculação do arquivo de estilos externos -->
-  <link rel="stylesheet" href="style.css">
+  <title>Diário da Selva | Reino Animal</title>
+  <style>
+    /* VARIÁVEIS DE CORES DA SELVA */
+    :root {
+      --verde-escuro: #1b3b22;
+      --verde-selva: #2d5a27;
+      --verde-claro: #8eb897;
+      --marrom-terra: #4a2e18;
+      --marrom-tronco: #8c6239;
+      --creme-fundo: #f4f1ea;
+      --texto-cor: #2b2b2b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--creme-fundo);
+      color: var(--texto-cor);
+      line-height: 1.6;
+    }
+
+    /* CABEÇALHO */
+    header {
+      background: linear-gradient(rgba(27, 59, 34, 0.85), rgba(74, 46, 24, 0.85)), 
+                  url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80') center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 5px solid var(--marrom-tronco);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: var(--verde-claro);
+    }
+
+    /* BARRA DE FILTROS (DINÂMICO) */
+    .filtros {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      background-color: var(--verde-escuro);
+      flex-wrap: wrap;
+    }
+
+    .btn-filtro {
+      background-color: var(--marrom-terra);
+      color: #fff;
+      border: 2px solid var(--marrom-tronco);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-filtro:hover, .btn-filtro.ativo {
+      background-color: var(--verde-claro);
+      color: var(--verde-escuro);
+    }
+
+    /* CONTAINER PRINCIPAL */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .grid-materias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    /* CARD DE MATÉRIA */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--verde-claro);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-conteudo {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .categoria {
+      align-self: flex-start;
+      background-color: var(--verde-selva);
+      color: #fff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      color: var(--marrom-terra);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+      flex-grow: 1;
+    }
+
+    .btn-ler {
+      margin-top: 15px;
+      display: inline-block;
+      text-align: center;
+      background-color: var(--marrom-tronco);
+      color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-ler:hover {
+      background-color: var(--verde-escuro);
+    }
+
+    /* RODAPÉ */
+    footer {
+      background-color: var(--verde-escuro);
+      color: var(--verde-claro);
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      border-top: 4px solid var(--marrom-terra);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Cabeçalho Principal -->
-  <header class="header">
-    <div class="header-content">
-      <h1>Mundo da Selva 🌿</h1>
-      <p>Explorando os mistérios e a beleza da vida selvagem</p>
-    </div>
+  <header>
+    <h1>DIÁRIO DA SELVA</h1>
+    <p>Explorando a vida selvagem, hábitos e mistérios dos grandes predadores e primatas.</p>
   </header>
 
-  <!-- Navegação Principal -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html" class="active">Início</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="contato.html">Contato</a></li>
-    </ul>
-  </nav>
+  <div class="filtros">
+    <button class="btn-filtro ativo" onclick="filtrarMaterias('todos')">Todos</button>
+    <button class="btn-filtro" onclick="filtrarMaterias('felinos')">Felinos</button>
+    <button class="btn-filtro" onclick="filtrarMaterias('primatas')">Primatas</button>
+    <button class="btn-filtro" onclick="filtrarMaterias('reptois')">Répteis</button>
+  </div>
 
-  <!-- Conteúdo Principal do Blog -->
-  <main class="container">
-    
-    <!-- Artigo 1: Onça-Pintada -->
-    <article class="card">
-      <span class="badge">Felinos</span>
-      <h2>A Onça-Pintada: A Rainha da Selva</h2>
-      
-      <!-- Substitua o caminho da imagem se tiver uma pasta "images/" -->
-      <img src="images/onca.jpg" alt="Foto de uma Onça-Pintada na floresta" class="card-img" onerror="this.src='https://via.placeholder.com/800x400?text=On%C3%A7a-Pintada'">
-      
-      <p>A onça-pintada é o maior felino do continente americano. Com sua mordida extremamente forte, ela é capaz de perfurar até cascas duras de répteis.</p>
-      
-      <button class="btn" onclick="mostrarCuriosidade('curiosidade-onca')">Ver Curiosidade</button>
-      
-      <div id="curiosidade-onca" class="curiosidade">
-        💡 <strong>Você sabia?</strong> Diferente de muitos felinos domésticos, as onças-pintadas adoram água e são excelentes nadadoras!
-      </div>
-    </article>
+  <div class="container">
+    <div class="grid-materias" id="gridMaterias">
 
-    <!-- Artigo 2: Lêmure -->
-    <article class="card">
-      <span class="badge">Primatas</span>
-      <h2>O Lêmure: Os Guardiões de Madagascar</h2>
-      
-      <img src="images/lemure.jpg" alt="Foto de um Lêmure" class="card-img" onerror="this.src='https://via.placeholder.com/800x400?text=L%C3%AAmure'">
-      
-      <p>Encontrados exclusivamente na ilha de Madagascar, os lêmures têm papéis ecológicos fundamentais como dispersores de sementes nas florestas tropicais.</p>
-      
-      <button class="btn" onclick="mostrarCuriosidade('curiosidade-lemure')">Ver Curiosidade</button>
-      
-      <div id="curiosidade-lemure" class="curiosidade">
-        💡 <strong>Você sabia?</strong> Algumas espécies de lêmures usam cantos e vocalizações em grupo para delimitar seu território na selva.
-      </div>
-    </article>
+      <!-- Matéria 1 -->
+      <article class="card" data-categoria="felinos">
+        <img src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=600&q=80" alt="Onça-pintada na selva">
+        <div class="card-conteudo">
+          <span class="categoria">Felinos</span>
+          <h2>A Onça-Pintada: O Maior Predador das Américas</h2>
+          <p>Diferente de outros felinos, a onça-pintada adora água e possui uma das mordidas mais potentes do reino animal, capaz de perfurar cascos de tartaruga.</p>
+          <a href="#" class="btn-ler">Ler Matéria Completa</a>
+        </div>
+      </article>
 
-  </main>
+      <!-- Matéria 2 -->
+      <article class="card" data-categoria="primatas">
+        <img src="https://images.unsplash.com/photo-1540573133985-780688d1728b?auto=format&fit=crop&w=600&q=80" alt="Gorila das montanhas">
+        <div class="card-conteudo">
+          <span class="categoria">Primatas</span>
+          <h2>A Estrutura Social dos Gorilas-das-Montanhas</h2>
+          <p>Liderados pelo imponente "costa-prateada", esses primatas possuem uma organização familiar complexa baseada no respeito, proteção e cooperação.</p>
+          <a href="#" class="btn-ler">Ler Matéria Completa</a>
+        </div>
+      </article>
 
-  <!-- Rodapé -->
-  <footer class="footer">
-    <p>&copy; 2026 Mundo da Selva - Criando tecnologia e compartilhando conhecimento.</p>
+      <!-- Matéria 3 -->
+      <article class="card" data-categoria="reptois">
+        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=600&q=80" alt="Camaleão sobre folha">
+        <div class="card-conteudo">
+          <span class="categoria">Répteis</span>
+          <h2>Camaleões: Mestres do Disfarce e da Visão</h2>
+          <p>A mudança de cor dos camaleões não serve apenas para camuflagem, mas também para comunicação e controle de temperatura corporal.</p>
+          <a href="#" class="btn-ler">Ler Matéria Completa</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Diário da Selva — Criando e Consumindo Tecnologia com Propósito.</p>
   </footer>
 
-  <!-- Vinculação do arquivo de script interativo -->
-  <script src="script.js"></script>
+  <script>
+    // LÓGICA JAVASCRIPT DE FILTRAGEM DINÂMICA
+    function filtrarMaterias(categoria) {
+      const cards = document.querySelectorAll('.card');
+      const botoes = document.querySelectorAll('.btn-filtro');
+
+      // Atualiza o botão ativo
+      botoes.forEach(btn => btn.classList.remove('ativo'));
+      event.target.classList.add('ativo');
+
+      // Exibe ou oculta os cards com base na categoria
+      cards.forEach(card => {
+        const catCard = card.getAttribute('data-categoria');
+        if (categoria === 'todos' || catCard === categoria) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
