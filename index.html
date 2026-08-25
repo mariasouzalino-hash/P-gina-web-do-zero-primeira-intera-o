@@ -334,19 +334,36 @@
 <div class="widget">
   <h3>🎧 Trilha Sonora 2000s</h3>
   
-  <!-- Player do YouTube com Gimme More da Britney Spears -->
-  <iframe 
-    style="width: 100%; height: 180px; border-radius: 12px; border: 2px solid var(--rosa-pink);" 
-    src="https://www.youtube.com/embed/elueA2rozyg" 
-    title="Britney Spears - Gimme More" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-  </iframe>
+  <!-- Aponta direto para o arquivo gimme-more.mp3 que está na sua pasta -->
+  <audio id="musica-britney" src="gimme-more.mp3"></audio>
 
-  <ul class="playlist-list" style="margin-top: 10px;">
+  <button id="btn-player" class="btn-pink" onclick="tocarOuPausar()" style="width: 100%; margin-bottom: 15px;">
+    ▶️ Tocar Gimme More - Britney
+  </button>
+
+  <ul class="playlist-list">
     <li>🎵 Britney Spears - Gimme More</li>
     <li>🎵 Vanessa Carlton - A Thousand Miles</li>
     <li>🎵 Lindsay Lohan - Ultimate</li>
   </ul>
 </div>
+
+<script>
+  function tocarOuPausar() {
+    var audio = document.getElementById('musica-britney');
+    var botao = document.getElementById('btn-player');
+
+    if (audio.paused) {
+      audio.play().then(() => {
+        botao.innerText = '⏸️ Pausar: Gimme More';
+        botao.style.backgroundColor = 'var(--rosa-chiclete)';
+      }).catch(function(erro) {
+        alert('Dê um clique na página primeiro e tente apertar o play novamente!');
+      });
+    } else {
+      audio.pause();
+      botao.innerText = '▶️ Tocar Gimme More - Britney';
+      botao.style.backgroundColor = 'var(--rosa-pink)';
+    }
+  }
+</script>
