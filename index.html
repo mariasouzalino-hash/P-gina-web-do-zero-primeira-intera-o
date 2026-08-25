@@ -3,250 +3,332 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diário da Selva | Reino Animal</title>
+  <title>The Pink Burn Book - Clássicos dos Anos 2000</title>
+  
+  <!-- Fonte com estilo anos 2000 / Retrô -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* VARIÁVEIS DE CORES DA SELVA */
+    /* VARIABLES & SETUP */
     :root {
-      --verde-escuro: #1b3b22;
-      --verde-selva: #2d5a27;
-      --verde-claro: #8eb897;
-      --marrom-terra: #4a2e18;
-      --marrom-tronco: #8c6239;
-      --creme-fundo: #f4f1ea;
-      --texto-cor: #2b2b2b;
+      --rosa-pink: #ff1493;
+      --rosa-medio: #ff69b4;
+      --rosa-claro: #ffe4e1;
+      --branco: #ffffff;
+      --texto-escuro: #4a0e2e;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background-color: var(--creme-fundo);
-      color: var(--texto-cor);
-      line-height: 1.6;
+      background-color: var(--rosa-claro);
+      background-image: radial-gradient(var(--rosa-medio) 1px, transparent 1px);
+      background-size: 20px 20px;
+      font-family: 'Comic Neue', cursive, sans-serif;
+      color: var(--texto-escuro);
+      padding: 20px;
     }
 
-    /* CABEÇALHO */
+    /* HEADER */
     header {
-      background: linear-gradient(rgba(27, 59, 34, 0.85), rgba(74, 46, 24, 0.85)), 
-                  url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80') center/cover;
-      color: #fff;
+      background: linear-gradient(135deg, var(--rosa-pink), var(--rosa-medio));
+      color: var(--branco);
       text-align: center;
-      padding: 60px 20px;
-      border-bottom: 5px solid var(--marrom-tronco);
+      padding: 30px;
+      border-radius: 20px;
+      border: 4px dashed var(--branco);
+      box-shadow: 0 8px 15px rgba(255, 20, 147, 0.3);
+      margin-bottom: 25px;
     }
 
     header h1 {
+      font-family: 'Fredoka', sans-serif;
       font-size: 2.8rem;
+      text-transform: uppercase;
       letter-spacing: 2px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      text-shadow: 3px 3px 0px var(--texto-escuro);
     }
 
     header p {
       font-size: 1.2rem;
-      margin-top: 10px;
-      color: var(--verde-claro);
-    }
-
-    /* BARRA DE FILTROS (DINÂMICO) */
-    .filtros {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      background-color: var(--verde-escuro);
-      flex-wrap: wrap;
-    }
-
-    .btn-filtro {
-      background-color: var(--marrom-terra);
-      color: #fff;
-      border: 2px solid var(--marrom-tronco);
-      padding: 8px 18px;
-      border-radius: 20px;
-      cursor: pointer;
+      margin-top: 8px;
       font-weight: bold;
-      transition: all 0.3s ease;
     }
 
-    .btn-filtro:hover, .btn-filtro.ativo {
-      background-color: var(--verde-claro);
-      color: var(--verde-escuro);
+    /* BOTÃO INTERATIVO (JS) */
+    .interactive-banner {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
-    /* CONTAINER PRINCIPAL */
+    .btn-pink {
+      background-color: var(--rosa-pink);
+      color: var(--branco);
+      border: 3px solid var(--branco);
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-family: 'Fredoka', sans-serif;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+    }
+
+    .btn-pink:hover {
+      transform: scale(1.05);
+      background-color: #d80073;
+    }
+
+    /* LAYOUT PRINCIPAL */
     .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    .grid-materias {
+      max-width: 1100px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 2fr 1fr;
       gap: 25px;
     }
 
-    /* CARD DE MATÉRIA */
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      border: 1px solid var(--verde-claro);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card-conteudo {
+    /* FEED DE MATÉRIAS */
+    .post-card {
+      background: var(--branco);
+      border-radius: 15px;
+      border: 3px solid var(--rosa-medio);
       padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+      margin-bottom: 25px;
+      box-shadow: 5px 5px 0px var(--rosa-pink);
     }
 
-    .categoria {
-      align-self: flex-start;
-      background-color: var(--verde-selva);
-      color: #fff;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-    }
-
-    .card h2 {
-      color: var(--marrom-terra);
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-      flex-grow: 1;
-    }
-
-    .btn-ler {
-      margin-top: 15px;
+    .post-tag {
       display: inline-block;
-      text-align: center;
-      background-color: var(--marrom-tronco);
-      color: #fff;
-      padding: 10px;
-      border-radius: 6px;
-      text-decoration: none;
+      background: var(--rosa-claro);
+      color: var(--rosa-pink);
       font-weight: bold;
-      transition: background 0.3s;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      border: 1px solid var(--rosa-medio);
     }
 
-    .btn-ler:hover {
-      background-color: var(--verde-escuro);
+    .post-title {
+      font-family: 'Fredoka', sans-serif;
+      color: var(--rosa-pink);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
     }
 
-    /* RODAPÉ */
+    .post-image {
+      width: 100%;
+      max-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--rosa-claro);
+      margin: 15px 0;
+    }
+
+    .post-content {
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    /* BARRA LATERAL (SIDEBAR) */
+    sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .widget {
+      background: var(--branco);
+      border-radius: 15px;
+      padding: 18px;
+      border: 3px solid var(--rosa-pink);
+    }
+
+    .widget h3 {
+      font-family: 'Fredoka', sans-serif;
+      color: var(--rosa-pink);
+      margin-bottom: 12px;
+      border-bottom: 2px dashed var(--rosa-claro);
+      padding-bottom: 5px;
+    }
+
+    .playlist-list, .top-movies-list {
+      list-style: none;
+    }
+
+    .playlist-list li, .top-movies-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rosa-claro);
+      font-weight: bold;
+    }
+
+    /* FOOTER */
     footer {
-      background-color: var(--verde-escuro);
-      color: var(--verde-claro);
       text-align: center;
+      margin-top: 40px;
       padding: 20px;
-      margin-top: 50px;
-      border-top: 4px solid var(--marrom-terra);
+      background: var(--rosa-pink);
+      color: var(--branco);
+      border-radius: 15px;
+      font-weight: bold;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>DIÁRIO DA SELVA</h1>
-    <p>Explorando a vida selvagem, hábitos e mistérios dos grandes predadores e primatas.</p>
+    <h1>★ Pop Girlies 2000 ★</h1>
+    <p>O seu guia definitivo para os filmes mais icônicos da década de ouro!</p>
   </header>
 
-  <div class="filtros">
-    <button class="btn-filtro ativo" onclick="filtrarMaterias('todos')">Todos</button>
-    <button class="btn-filtro" onclick="filtrarMaterias('felinos')">Felinos</button>
-    <button class="btn-filtro" onclick="filtrarMaterias('primatas')">Primatas</button>
-    <button class="btn-filtro" onclick="filtrarMaterias('reptois')">Répteis</button>
+  <div class="interactive-banner">
+    <button class="btn-pink" onclick="gerarQuote()">✨ Clique para ver uma frase clássica dos 2000s ✨</button>
+    <p id="quote-display" style="margin-top: 10px; font-weight: bold; color: var(--rosa-pink); min-height: 24px;"></p>
   </div>
 
   <div class="container">
-    <div class="grid-materias" id="gridMaterias">
+    
+    <!-- ÁREA PRINCIPAL COM MATÉRIAS -->
+    <main>
 
-      <!-- Matéria 1 -->
-      <article class="card" data-categoria="felinos">
-        <img src="https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?auto=format&fit=crop&w=600&q=80" alt="Onça-pintada na selva">
-        <div class="card-conteudo">
-          <span class="categoria">Felinos</span>
-          <h2>A Onça-Pintada: O Maior Predador das Américas</h2>
-          <p>Diferente de outros felinos, a onça-pintada adora água e possui uma das mordidas mais potentes do reino animal, capaz de perfurar cascos de tartaruga.</p>
-          <a href="#" class="btn-ler">Ler Matéria Completa</a>
-        </div>
+      <!-- ARTIGO 1 -->
+      <article class="post-card">
+        <span class="post-tag">Ícone Absoluto</span>
+        <h2 class="post-title">Meninas Malvadas (2004)</h2>
+        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Sessão de cinema vintage" class="post-image">
+        <p class="post-content">
+          O maior clássico da década! Dirigido por Mark Waters e escrito por Tina Fey, o filme retrata com humor ácido e cirúrgico as regras sociais não ditas do ensino médio. Entre o "Burn Book" e a regra de vestir rosa às quartas-feiras, a obra moldou a cultura pop dos anos 2000 e deu origem a inúmeros memes que usamos ativamente até hoje.
+        </p>
       </article>
 
-      <!-- Matéria 2 -->
-      <article class="card" data-categoria="primatas">
-        <img src="https://images.unsplash.com/photo-1540573133985-780688d1728b?auto=format&fit=crop&w=600&q=80" alt="Gorila das montanhas">
-        <div class="card-conteudo">
-          <span class="categoria">Primatas</span>
-          <h2>A Estrutura Social dos Gorilas-das-Montanhas</h2>
-          <p>Liderados pelo imponente "costa-prateada", esses primatas possuem uma organização familiar complexa baseada no respeito, proteção e cooperação.</p>
-          <a href="#" class="btn-ler">Ler Matéria Completa</a>
-        </div>
+      <!-- ARTIGO 2 -->
+      <article class="post-card">
+        <span class="post-tag">Nostalgia & Magia</span>
+        <h2 class="post-title">De Repente 30 (2004)</h2>
+        <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=800&q=80" alt="Pipoca e entretenimento" class="post-image">
+        <p class="post-content">
+          Uma garota de 13 anos faz um pedido na sua festa de aniversário e acorda misteriosamente no corpo de uma mulher de 30 anos bem-sucedida em Nova York. Com Jennifer Garner e Mark Ruffalo, o filme traz uma cena inesquecível ao som de <i>Thriller</i> e entrega uma mensagem linda e divertida sobre amadurecimento sem perder a inocência.
+        </p>
       </article>
 
-      <!-- Matéria 3 -->
-      <article class="card" data-categoria="reptois">
-        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=600&q=80" alt="Camaleão sobre folha">
-        <div class="card-conteudo">
-          <span class="categoria">Répteis</span>
-          <h2>Camaleões: Mestres do Disfarce e da Visão</h2>
-          <p>A mudança de cor dos camaleões não serve apenas para camuflagem, mas também para comunicação e controle de temperatura corporal.</p>
-          <a href="#" class="btn-ler">Ler Matéria Completa</a>
-        </div>
+      <!-- ARTIGO 3 -->
+      <article class="post-card">
+        <span class="post-tag">Girl Power</span>
+        <h2 class="post-title">Legalmente Loira (2001)</h2>
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80" alt="Livro de Direito e óculos de sol" class="post-image">
+        <p class="post-content">
+          Elle Woods (Reese Witherspoon) prova para todos que inteligência, determinação e autenticidade não dependem de estereótipos. Ao entrar na concorrida faculdade de Direito de Harvard para reconquistar o ex-namorado, ela descobre seu próprio potencial e revoluciona o tribunal usando roupas rosas brilhantes e o seu conhecimento impecável.
+        </p>
       </article>
 
-    </div>
+      <!-- ARTIGO 4 -->
+      <article class="post-card">
+        <span class="post-tag">Realeza Pop</span>
+        <h2 class="post-title">O Diário da Princesa (2001)</h2>
+        <img src="https://images.unsplash.com/photo-1535551951406-a19828b0a76b?auto=format&fit=crop&w=800&q=80" alt="Tiara brilhante" class="post-image">
+        <p class="post-content">
+          Mia Thermopolis (Anne Hathaway) é uma adolescente comum e desajeitada de São Francisco que descobre repentinamente ser a única herdeira do trono do pequeno principado europeu de Genovia. Ao lado da icônica Rainha Clarisse (Julie Andrews), Mia passa por um processo de transformação real inesquecível.
+        </p>
+      </article>
+
+      <!-- ARTIGO 5 -->
+      <article class="post-card">
+        <span class="post-tag">Comédia Clássica</span>
+        <h2 class="post-title">Sexta-Feira Muito Louca (2003)</h2>
+        <p class="post-content">
+          Uma mãe controladora (Jamie Lee Curtis) e sua filha adolescente rockeira (Lindsay Lohan) vivem em pé de guerra. Após comerem biscoitos da sorte mágicos, elas trocam de corpo e são forçadas a viver a rotina uma da outra, aprendendo empatia, respeito e mandando ver no rock and roll.
+        </p>
+      </article>
+
+      <!-- ARTIGO 6 -->
+      <article class="post-card">
+        <span class="post-tag">Gargalhadas Garantidas</span>
+        <h2 class="post-title">As Branquelas (2004)</h2>
+        <p class="post-content">
+          Dois agentes do FBI (os irmãos Wayans) fracassam em uma missão e precisam proteger duas herdeiras milionárias se disfarçando como elas próprias. O resultado é uma das comédias mais marcantes e reassistíveis da história do cinema, com a inesquecível cena ao som de <i>A Thousand Miles</i>.
+        </p>
+      </article>
+
+      <!-- ARTIGO 7 -->
+      <article class="post-card">
+        <span class="post-tag">Esporte & Comédia</span>
+        <h2 class="post-title">Ela é o Cara (2006)</h2>
+        <p class="post-content">
+          Livremente inspirado na peça <i>Noite de Reis</i> de Shakespeare, o longa acompanha Viola (Amanda Bynes), que se disfarça como seu irmão gêmeo para conseguir vaga no time de futebol masculino da escola após o time feminino ser cortado.
+        </p>
+      </article>
+
+      <!-- ARTIGO 8 -->
+      <article class="post-card">
+        <span class="post-tag">Romance Moderno</span>
+        <h2 class="post-title">A Nova Cinderela (2004)</h2>
+        <p class="post-content">
+          Uma releitura moderna do clássico conto de fadas estrelada por Hilary Duff. Ambientada no ensino médio dos anos 2000, traz a troca do sapatinho de cristal por um celular de flip e encontros virtuais anônimos via chat de internet da época.
+        </p>
+      </article>
+
+    </main>
+
+    <!-- BARRA LATERAL DA PÁGINA -->
+    <sidebar>
+      
+      <div class="widget">
+        <h3>💖 Regras do Blog</h3>
+        <ul class="playlist-list">
+          <li>1. Às quartas usamos rosa.</li>
+          <li>2. Bend & Snap funciona sempre.</li>
+          <li>3. Ouvir Avril Lavigne no MP3 player.</li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3>🎧 Trilha Sonora 2000s</h3>
+        <ul class="playlist-list">
+          <li>🎵 Vanessa Carlton - A Thousand Miles</li>
+          <li>🎵 Britney Spears - Toxic</li>
+          <li>🎵 Lindsay Lohan - Ultimate</li>
+          <li>🎵 Hilary Duff - What Dreams Are Made Of</li>
+        </ul>
+      </div>
+
+    </sidebar>
+
   </div>
 
   <footer>
-    <p>&copy; 2026 Diário da Selva — Criando e Consumindo Tecnologia com Propósito.</p>
+    <p>Criado com HTML, CSS e JavaScript • Anos 2000 Forever ✨</p>
   </footer>
 
+  <!-- SCRIPT JAVASCRIPT DINÂMICO -->
   <script>
-    // LÓGICA JAVASCRIPT DE FILTRAGEM DINÂMICA
-    function filtrarMaterias(categoria) {
-      const cards = document.querySelectorAll('.card');
-      const botoes = document.querySelectorAll('.btn-filtro');
+    function gerarQuote() {
+      const frases = [
+        '"Às quartas-feiras nós usamos rosa!" — Meninas Malvadas',
+        '"A masculinidade não é algo que se possa comprar." — Legalmente Loira',
+        '"Trinta, durona e próspera!" — De Repente 30',
+        '"A coragem não é a ausência do medo, mas o julgamento de que algo é mais importante que o medo." — O Diário da Princesa',
+        '"Eu sou uma vadia do MP3 player!" — As Branquelas'
+      ];
 
-      // Atualiza o botão ativo
-      botoes.forEach(btn => btn.classList.remove('ativo'));
-      event.target.classList.add('ativo');
-
-      // Exibe ou oculta os cards com base na categoria
-      cards.forEach(card => {
-        const catCard = card.getAttribute('data-categoria');
-        if (categoria === 'todos' || catCard === categoria) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      const indiceRandom = Math.floor(Math.random() * frases.length);
+      const display = document.getElementById('quote-display');
+      display.innerText = frases[indiceRandom];
     }
   </script>
+
 </body>
 </html>
