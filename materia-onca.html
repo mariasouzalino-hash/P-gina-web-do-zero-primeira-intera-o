@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Onça-Pintada: O Maior Predador das Américas | Diário da Selva</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilos específicos para a página de leitura da matéria */
+    .materia-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
+    .btn-voltar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--verde-escuro);
+      color: var(--verde-broto);
+      padding: 10px 20px;
+      border-radius: var(--raio-botao);
+      font-weight: 600;
+      margin-bottom: 30px;
+      transition: var(--transicao-suave);
+    }
+
+    .btn-voltar:hover {
+      background-color: var(--marrom-tronco);
+      color: #ffffff;
+    }
+
+    .materia-header {
+      margin-bottom: 30px;
+    }
+
+    .materia-header h1 {
+      font-family: var(--fonte-titulo);
+      color: var(--marrom-terra);
+      font-size: 2.5rem;
+      line-height: 1.25;
+      margin: 15px 0;
+    }
+
+    .materia-meta-info {
+      display: flex;
+      gap: 20px;
+      color: var(--texto-mutado);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--borda-suave);
+      padding-bottom: 15px;
+    }
+
+    .materia-imagem-destaque {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: var(--raio-card);
+      box-shadow: 0 8px 20px var(--sombra-media);
+      margin-bottom: 35px;
+    }
+
+    .materia-corpo {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--texto-principal);
+    }
+
+    .materia-corpo p {
+      margin-bottom: 22px;
+    }
+
+    .materia-corpo h2 {
+      font-family: var(--fonte-titulo);
+      color: var(--verde-escuro);
+      font-size: 1.7rem;
+      margin: 35px 0 15px 0;
+    }
+
+    .caixa-destaque-facto {
+      background-color: var(--verde-suave);
+      border-left: 5px solid var(--verde-selva);
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 30px 0;
+      font-style: italic;
+      color: var(--verde-profundo);
+    }
+
+    .caixa-destaque-facto strong {
+      font-style: normal;
+      display: block;
+      margin-bottom: 5px;
+      color: var(--marrom-terra);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGAÇÃO SUPERIOR -->
+  <header class="header-selva" style="padding: 40px 20px 30px;">
+    <div class="header-conteudo">
+      <span class="badge-topo">Matéria Especial</span>
+      <h2 style="font-family: var(--fonte-titulo); font-size: 1.8rem; color: var(--verde-broto);">DIÁRIO DA SELVA</h2>
+    </div>
+  </header>
+
+  <main class="materia-container">
+    
+    <!-- BOTÃO PARA VOLTAR PARA O INDEX -->
+    <a href="index.html" class="btn-voltar">← Voltar para a página inicial</a>
+
+    <article>
+      <header class="materia-header">
+        <span class="badge-categoria">Felinos</span>
+        <h1>A Onça-Pintada: O Maior Predador das Américas</h1>
+        <div class="materia-meta-info">
+          <span>Escrito por: Equipe Diário da Selva</span>
+          <span>•</span>
+          <span>Tempo de leitura: 3 min</span>
+        </div>
+      </header>
+
+      <!-- FOTO PRINCIPAL DA MATÉRIA (substitua por onca.jpg se preferir imagem local) -->
+      <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1200&q=80" alt="Onça-Pintada na floresta tropical" class="materia-imagem-destaque">
+
+      <div class="materia-corpo">
+        <p>A onça-pintada (<em>Panthera onca</em>) é o maior felino do continente americano e o terceiro maior do mundo, ficando atrás apenas do tigre e do leão. Habitando as florestas tropicais densas da América do Sul e Central, este predador de topo desempenha um papel fundamental no equilíbrio do ecossistema da selva.</p>
+
+        <p>Diferente de outros felinos — que costumam evitar a água a todo custo —, a onça-pintada é uma excelente nadadora e adora frequentar rios e lagoas. Ela caça com facilidade na água, capturando desde peixes até jacarés e capivaras.</p>
+
+        <div class="caixa-destaque-facto">
+          <strong>Fato Impressionante:</strong>
+          Possui uma das mordidas mais potentes de todo o reino animal. Sua força mandibular permite que ela perfure cascos duros de tartaruga e os couros espessos de jacarés com extrema facilidade.
+        </div>
+
+        <h2>Técnica de Caça Única</h2>
+        <p>Enquanto a maioria dos grandes felinos mata suas presas sufocando-as pela garganta, a onça-pintada utiliza uma técnica diferenciada: ela morde diretamente o crânio da presa entre as orelhas, perfurando o osso e atingindo o cérebro de forma instantânea.</p>
+
+        <h2>Preservação e Importância</h2>
+        <p>Por estar no topo da cadeia alimentar, a presença da onça-pintada é um indicador claro de que a floresta ao seu redor está saudável. A preservação de seu habitat na Amazônia e no Pantanal é vital para a sobrevivência de centenas de outras espécies que compartilham o mesmo ecossistema.</p>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer-selva">
+    <div class="footer-copi">
+      <p>&copy; 2026 Diário da Selva. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
