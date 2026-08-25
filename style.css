@@ -1,414 +1,299 @@
-/* ==========================================================================
-   DIÁRIO DA SELVA - SISTEMA DE ESTILOS (style.css)
-   Cores do Tema: Tons de Verde, Marrom Terra, Madeira e Creme Orgânico
-   ========================================================================== */
+/* ===================================================
+   THE PINK BURN BOOK - ESTILOS CSS (Y2K / ANOS 2000)
+   =================================================== */
 
-/* --------------------------------------------------------------------------
-   1. VARIÁVEIS DE DESIGN & DESIGN SYSTEM
-   -------------------------------------------------------------------------- */
+/* ---------------------------------------------------
+   1. VARIÁVEIS GLAMOUR & RESET GLOBAL
+   --------------------------------------------------- */
 :root {
-  /* Paleta Primária - Selva & Floresta */
-  --verde-profundo: #142a1b;
-  --verde-escuro: #1b3b22;
-  --verde-selva: #2d5a27;
-  --verde-folha: #40753b;
-  --verde-claro: #8eb897;
-  --verde-broto: #c2d9c6;
-  --verde-suave: #e8f0e9;
-
-  /* Paleta Secundária - Terra, Troncos & Elementos Naturais */
-  --marrom-terra: #3d2413;
-  --marrom-tronco: #5c3a21;
-  --marrom-madeira: #8c6239;
-  --marrom-dourado: #b8860b;
-  --creme-fundo: #f4f1ea;
-  --creme-card: #fcfbfa;
-
-  /* Neutros & Feedback */
-  --texto-principal: #222522;
-  --texto-mutado: #5a635b;
-  --sombra-suave: rgba(20, 42, 27, 0.08);
-  --sombra-media: rgba(20, 42, 27, 0.16);
-  --sombra-forte: rgba(15, 30, 20, 0.28);
-  --borda-suave: #d8e0d9;
-
-  /* Tipografia */
-  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-  --fonte-corpo: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  
-  /* Transições & Bordas */
-  --transicao-suave: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --raio-card: 14px;
-  --raio-botao: 25px;
+  --rosa-pink: #ff1493;       /* Deep Pink vibrante clássico */
+  --rosa-chiclete: #ff69b4;   /* Hot Pink intermediário */
+  --rosa-claro: #ffe4e1;      /* Misty Rose suave para fundo */
+  --rosa-pastel: #fff0f5;     /* Lavender Blush para destaques */
+  --branco: #ffffff;
+  --texto-escuro: #4a0e2e;    /* Magenta escuro profundo para boa leitura */
+  --sombra-pink: rgba(255, 20, 147, 0.25);
+  --borda-brilho: rgba(255, 255, 255, 0.8);
 }
 
-/* --------------------------------------------------------------------------
-   2. RESET E CONFIGURAÇÕES BASE
-   -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
 body {
-  background-color: var(--creme-fundo);
-  color: var(--texto-principal);
-  font-family: var(--fonte-corpo);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  background-image: radial-gradient(var(--verde-broto) 0.8px, transparent 0.8px);
-  background-size: 24px 24px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* --------------------------------------------------------------------------
-   3. CABEÇALHO HERO (HEADER)
-   -------------------------------------------------------------------------- */
-.header-selva {
-  position: relative;
-  background: linear-gradient(135deg, rgba(20, 42, 27, 0.92) 0%, rgba(61, 36, 19, 0.88) 100%),
-              url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-  color: #ffffff;
-  text-align: center;
-  padding: 80px 20px 70px;
-  border-bottom: 6px solid var(--marrom-madeira);
-  box-shadow: 0 10px 25px var(--sombra-forte);
-}
-
-.header-conteudo {
-  max-width: 850px;
-  margin: 0 auto;
-}
-
-.badge-topo {
-  display: inline-block;
-  background-color: rgba(142, 184, 151, 0.2);
-  border: 1px solid var(--verde-claro);
-  color: var(--verde-claro);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  font-weight: 600;
-}
-
-.header-selva h1 {
-  font-family: var(--fonte-titulo);
-  font-size: 3.2rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #f0f7f1;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-  margin-bottom: 12px;
-}
-
-.header-selva p {
-  font-size: 1.25rem;
-  color: var(--verde-broto);
-  max-width: 680px;
-  margin: 0 auto;
-  font-weight: 300;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* --------------------------------------------------------------------------
-   4. BARRA DE FILTROS & BUSCA DINÂMICA
-   -------------------------------------------------------------------------- */
-.barra-interativa {
-  background-color: var(--verde-profundo);
+  background-color: var(--rosa-claro);
+  /* Padronagem Polka Dot sutil anos 2000 */
+  background-image: radial-gradient(var(--rosa-chiclete) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+  font-family: 'Comic Neue', cursive, 'Comic Sans MS', sans-serif;
+  color: var(--texto-escuro);
   padding: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 15px var(--sombra-media);
-  border-bottom: 2px solid var(--verde-folha);
+  min-height: 100vh;
 }
 
-.controles-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .controles-wrapper {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.filtros-categorias {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.btn-filtro {
-  background-color: var(--marrom-terra);
-  color: var(--verde-broto);
-  border: 2px solid var(--marrom-madeira);
-  padding: 8px 20px;
-  border-radius: var(--raio-botao);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: var(--transicao-suave);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.btn-filtro:hover {
-  background-color: var(--verde-selva);
-  color: #ffffff;
-  border-color: var(--verde-claro);
-  transform: translateY(-2px);
-}
-
-.btn-filtro.ativo {
-  background-color: var(--verde-claro);
-  color: var(--verde-profundo);
-  border-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(142, 184, 151, 0.4);
-}
-
-.campo-busca {
+/* ---------------------------------------------------
+   2. HEADER & BARRA SUPERIOR
+   --------------------------------------------------- */
+header {
+  background: linear-gradient(135deg, var(--rosa-pink) 0%, var(--rosa-chiclete) 100%);
+  color: var(--branco);
+  text-align: center;
+  padding: 35px 20px;
+  border-radius: 24px;
+  border: 4px dashed var(--branco);
+  box-shadow: 0 10px 25px var(--sombra-pink);
+  margin-bottom: 30px;
   position: relative;
-  width: 100%;
-  max-width: 320px;
+  overflow: hidden;
 }
 
-.campo-busca input {
-  width: 100%;
-  padding: 10px 16px 10px 40px;
-  border-radius: 20px;
-  border: 1px solid var(--verde-folha);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  font-size: 0.95rem;
-  outline: none;
-  transition: var(--transicao-suave);
-}
-
-.campo-busca input::placeholder {
-  color: var(--verde-claro);
+/* Detalhe de estrelas no topo do Header */
+header::before {
+  content: '★ ★ ★';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  letter-spacing: 15px;
+  color: var(--rosa-claro);
   opacity: 0.7;
 }
 
-.campo-busca input:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: var(--verde-claro);
-  box-shadow: 0 0 8px rgba(142, 184, 151, 0.5);
+header h1 {
+  font-family: 'Fredoka', 'Arial Rounded MT Bold', sans-serif;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0px var(--texto-escuro), 0 0 15px rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
 }
 
-/* --------------------------------------------------------------------------
-   5. CONTAINER PRINCIPAL & GRID DE MATÉRIAS
-   -------------------------------------------------------------------------- */
-.container-principal {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
+header p {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--rosa-pastel);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.secao-titulo {
-  margin-bottom: 30px;
+/* ---------------------------------------------------
+   3. BANNER INTERATIVO (FRASES & GERADOR)
+   --------------------------------------------------- */
+.interactive-banner {
   text-align: center;
+  margin-bottom: 30px;
+  background: var(--branco);
+  padding: 20px;
+  border-radius: 20px;
+  border: 3px solid var(--rosa-chiclete);
+  box-shadow: 4px 4px 0px var(--rosa-pink);
 }
 
-.secao-titulo h2 {
-  font-family: var(--fonte-titulo);
-  color: var(--marrom-terra);
-  font-size: 2.2rem;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
+.btn-pink {
+  background-color: var(--rosa-pink);
+  color: var(--branco);
+  border: 3px solid var(--branco);
+  padding: 14px 28px;
+  font-size: 1.15rem;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px var(--sombra-pink);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  outline: none;
 }
 
-.secao-titulo h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 4px;
-  background-color: var(--marrom-madeira);
-  border-radius: 2px;
+.btn-pink:hover {
+  transform: scale(1.06) translateY(-2px);
+  background-color: #d80073;
+  box-shadow: 0 8px 20px var(--sombra-pink);
 }
 
-.grid-materias {
+.btn-pink:active {
+  transform: scale(0.98);
+}
+
+#quote-display {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--rosa-pink);
+  min-height: 28px;
+  font-style: italic;
+}
+
+/* ---------------------------------------------------
+   4. LAYOUT PRINCIPAL (GRID)
+   --------------------------------------------------- */
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 2.2fr 1fr;
   gap: 30px;
 }
 
-/* --------------------------------------------------------------------------
-   6. CARDS DE MATÉRIAS (DESIGN DETALHADO)
-   -------------------------------------------------------------------------- */
-.card-materia {
-  background: var(--creme-card);
-  border-radius: var(--raio-card);
-  overflow: hidden;
-  box-shadow: 0 6px 18px var(--sombra-suave);
-  border: 1px solid var(--borda-suave);
-  display: flex;
-  flex-direction: column;
-  transition: var(--transicao-suave);
-  position: relative;
-}
-
-.card-materia:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px var(--sombra-media);
-  border-color: var(--verde-claro);
-}
-
-.card-imagem-wrapper {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-}
-
-.card-materia img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.card-materia:hover img {
-  transform: scale(1.08);
-}
-
-.badge-categoria {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background-color: var(--verde-profundo);
-  color: var(--verde-broto);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 6px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--verde-folha);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-}
-
-.card-conteudo {
+/* ---------------------------------------------------
+   5. CARDS DE MATÉRIAS / POSTS DOS FILMES
+   --------------------------------------------------- */
+.post-card {
+  background: var(--branco);
+  border-radius: 20px;
+  border: 3px solid var(--rosa-chiclete);
   padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 6px 6px 0px var(--rosa-pink);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 0px var(--rosa-pink);
+}
+
+.post-tag {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--rosa-claro), #fff);
+  color: var(--rosa-pink);
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  border: 1.5px solid var(--rosa-chiclete);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.post-title {
+  font-family: 'Fredoka', sans-serif;
+  color: var(--rosa-pink);
+  font-size: 2rem;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid var(--rosa-claro);
+  margin: 15px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.post-content {
+  line-height: 1.7;
+  font-size: 1.12rem;
+  color: var(--texto-escuro);
+}
+
+/* Área interativa do botão de Like (Gerado pelo JS) */
+.like-area {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 2px dashed var(--rosa-claro);
+}
+
+.btn-like {
+  background: var(--rosa-chiclete) !important;
+  color: var(--branco) !important;
+  border: 2px solid var(--branco) !important;
+  padding: 8px 18px !important;
+  border-radius: 25px !important;
+  font-weight: bold;
+  box-shadow: 0 3px 8px var(--sombra-pink);
+  cursor: pointer;
+}
+
+.btn-like:hover {
+  background: var(--rosa-pink) !important;
+}
+
+/* ---------------------------------------------------
+   6. SIDEBAR & WIDGETS
+   --------------------------------------------------- */
+sidebar {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  gap: 25px;
 }
 
-.card-materia h3 {
-  font-family: var(--fonte-titulo);
-  color: var(--marrom-terra);
-  font-size: 1.45rem;
-  line-height: 1.35;
-  margin-bottom: 12px;
-  transition: color 0.2s ease;
+.widget {
+  background: var(--branco);
+  border-radius: 20px;
+  padding: 22px;
+  border: 3px solid var(--rosa-pink);
+  box-shadow: 4px 4px 0px var(--rosa-chiclete);
 }
 
-.card-materia:hover h3 {
-  color: var(--verde-selva);
+.widget h3 {
+  font-family: 'Fredoka', sans-serif;
+  color: var(--rosa-pink);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  border-bottom: 2px dashed var(--rosa-chiclete);
+  padding-bottom: 8px;
 }
 
-.card-materia p {
-  font-size: 0.98rem;
-  color: var(--texto-mutado);
-  flex-grow: 1;
-  margin-bottom: 20px;
+.playlist-list, .top-movies-list {
+  list-style: none;
 }
 
-.card-rodape {
-  border-top: 1px solid var(--borda-suave);
-  padding-top: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.playlist-list li, .top-movies-list li {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--rosa-claro);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
-.btn-ler-materia {
-  background-color: var(--marrom-tronco);
-  color: #ffffff;
-  padding: 10px 20px;
+.playlist-list li:last-child, .top-movies-list li:last-child {
+  border-bottom: none;
+}
+
+.playlist-list li:hover {
+  color: var(--rosa-pink);
+  padding-left: 14px;
+  background-color: var(--rosa-pastel);
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: var(--transicao-suave);
 }
 
-.btn-ler-materia:hover {
-  background-color: var(--verde-escuro);
-  color: var(--verde-broto);
-  box-shadow: 0 4px 12px rgba(27, 59, 34, 0.3);
-}
-
-.tempo-leitura {
-  font-size: 0.8rem;
-  color: var(--marrom-madeira);
-  font-weight: 600;
-}
-
-/* --------------------------------------------------------------------------
-   7. RODAPÉ (FOOTER)
-   -------------------------------------------------------------------------- */
-.footer-selva {
-  background-color: var(--verde-profundo);
-  color: var(--verde-broto);
-  padding: 50px 20px 20px;
-  margin-top: 80px;
-  border-top: 5px solid var(--marrom-terra);
-}
-
-.footer-conteudo {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid rgba(142, 184, 151, 0.2);
-}
-
-.footer-col h4 {
-  color: #ffffff;
-  font-family: var(--fonte-titulo);
-  font-size: 1.2rem;
-  margin-bottom: 18px;
-}
-
-.footer-copi {
+/* ---------------------------------------------------
+   7. FOOTER DA PÁGINA
+   --------------------------------------------------- */
+footer {
   text-align: center;
-  padding-top: 25px;
-  font-size: 0.88rem;
-  color: var(--verde-claro);
-  opacity: 0.8;
+  margin-top: 50px;
+  padding: 24px;
+  background: linear-gradient(135deg, var(--rosa-pink), var(--rosa-chiclete));
+  color: var(--branco);
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: 3px solid var(--branco);
+  box-shadow: 0 6px 20px var(--sombra-pink);
+}
+
+/* ---------------------------------------------------
+   8. RESPONSIVIDADE (MOBILE & TABLETS)
+   --------------------------------------------------- */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 2.3rem;
+  }
+
+  .post-title {
+    font-size: 1.6rem;
+  }
 }
