@@ -334,43 +334,19 @@
 <div class="widget">
   <h3>🎧 Trilha Sonora 2000s</h3>
   
-  <!-- Garanta que o nome do arquivo na sua pasta seja exatamente gimme-more.mp3 -->
-  <audio id="musica-britney" src="gimme-more.mp3" preload="auto"></audio>
+  <!-- Player do clipe/música oficial que funciona em qualquer computador com internet -->
+  <iframe 
+    style="width: 100%; height: 180px; border-radius: 12px; border: 2px solid #ff69b4;" 
+    src="https://www.youtube-nocookie.com/embed/elueA2rozyg" 
+    title="Britney Spears - Gimme More" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
 
-  <button id="btn-player" class="btn-pink" onclick="tocarOuPausar()" style="width: 100%; margin-bottom: 15px;">
-    ▶️ Tocar Gimme More - Britney
-  </button>
-
-  <ul class="playlist-list">
+  <ul class="playlist-list" style="margin-top: 10px;">
     <li>🎵 Britney Spears - Gimme More</li>
     <li>🎵 Vanessa Carlton - A Thousand Miles</li>
     <li>🎵 Lindsay Lohan - Ultimate</li>
   </ul>
 </div>
-
-<script>
-  function tocarOuPausar() {
-    var audio = document.getElementById('musica-britney');
-    var botao = document.getElementById('btn-player');
-
-    if (audio.paused) {
-      // Tenta tocar o áudio
-      var playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise.then(function() {
-          // Deu certo! A música começou a tocar
-          botao.innerText = '⏸️ Pausar: Gimme More';
-          botao.style.backgroundColor = 'var(--rosa-chiclete)';
-        }).catch(function(erro) {
-          // Se der erro, avisa exatamente o motivo real
-          alert('Erro ao carregar o som! Verifique se o arquivo "gimme-more.mp3" está exatamente com esse nome dentro da mesma pasta do index.html');
-        });
-      }
-    } else {
-      audio.pause();
-      botao.innerText = '▶️ Tocar Gimme More - Britney';
-      botao.style.backgroundColor = 'var(--rosa-pink)';
-    }
-  }
-</script>
