@@ -1,126 +1,144 @@
-/* ==========================================================================
-   DIÁRIO DA SELVA - COMPORTAMENTOS INTERATIVOS (script.js)
-   ========================================================================== */
+/* ===================================================
+   THE PINK BURN BOOK - SCRIPT JAVASCRIPT DINÂMICO
+   =================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Inicialização dos componentes
-  initFiltrosECampos();
-  calcularTempoLeitura();
-  initEfeitosScroll();
-});
+// 1. GERADOR DE FRASES DOS FILMES
+const frases2000s = [
+  { frase: "Às quartas-feiras nós usamos rosa!", filme: "Meninas Malvadas" },
+  { frase: "O que, como se fosse difícil?", filme: "Legalmente Loira" },
+  { frase: "Trinta, durona e próspera!", filme: "De Repente 30" },
+  { frase: "A coragem não é a ausência de medo, mas a decisão de que algo é mais importante que ele.", filme: "O Diário da Princesa" },
+  { frase: "Segure meu poodle!", filme: "As Branquelas" },
+  { frase: "Você é um garoto muito bonito... quer dizer, garota!", filme: "Ela é o Cara" },
+  { frase: "A espera pelo seu príncipe pode demorar, mas a pizza chega em 30 minutos.", filme: "A Nova Cinderela" }
+];
 
-/**
-  1. SISTEMA DE FILTRAGEM DE CATEGORIAS E BUSCA EM TEMPO REAL
- */
-function initFiltrosECampos() {
-  const botoesFiltro = document.querySelectorAll('.btn-filtro');
-  const campoBusca = document.getElementById('inputBusca');
-  const cards = document.querySelectorAll('.card-materia');
-  const gridMaterias = document.getElementById('gridMaterias');
+function gerarQuote() {
+  const display = document.getElementById('quote-display');
+  if (!display) return;
 
-  let categoriaAtiva = 'todos';
-  let termoBusca = '';
+  const indiceAleatorio = Math.floor(Math.random() * frases2000s.length);
+  const selecao = frases2000s[indiceAleatorio];
 
-  // Função central para aplicar ambos os filtros simultaneamente
-  function aplicarFiltros() {
-    let visiveis = 0;
+  // Animação simples de transição
+  display.style.opacity = 0;
+  
+  setTimeout(() => {
+    display.innerText = `"${selecao.frase}" — ${selecao.filme}`;
+    display.style.opacity = 1;
+    display.style.transition = 'opacity 0.4s ease-in-out';
+  }, 200);
+}
 
-    cards.forEach(card => {
-      const categoriaCard = card.getAttribute('data-categoria');
-      const tituloCard = card.querySelector('h3').textContent.toLowerCase();
-      const resumoCard = card.querySelector('p').textContent.toLowerCase();
+// 2. SISTEMA DE "CURTIR" COM CONTADOR NOS CARDS DOS FILMES
+function inicializarBotoesCurtir() {
+  const posts = document.querySelectorAll('.post-card');
 
-      // Verifica correspondência de categoria
-      const atendeCategoria = (categoriaAtiva === 'todos' || categoriaCard === categoriaAtiva);
+  posts.forEach((post, index) => {
+    // Cria o container do botão de curtir
+    const likeArea = document.createElement('div');
+    likeArea.className = 'like-area';
+    likeArea.style.marginTop = '15px';
+    likeArea.style.display = 'flex';
+    likeArea.style.alignItems = 'center';
+    likeArea.style.gap = '10px';
 
-      // Verifica correspondência de busca
-      const atendeBusca = tituloCard.includes(termoBusca) || resumoCard.includes(termoBusca);
+    let curtidas = Math.floor(Math.random() * 50) + 100; // Valor inicial aleatório nostálgico
 
-      if (atendeCategoria && atendeBusca) {
-        card.style.display = 'flex';
-        visiveis++;
+    likeArea.innerHTML = `
+      <button class="btn-like" style="
+        background: var(--rosa-medio);
+        color: white;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: 'Fredoka', sans-serif;
+        font-size: 0.9rem;
+        transition: transform 0.2s;
+      ">💖 Amamos! (<span class="count">${curtidas}</span>)</button>
+    `;
+
+    post.appendChild(likeArea);
+
+    const btnLike = likeArea.querySelector('.btn-like');
+    const countSpan = likeArea.querySelector('.count');
+    let jaCurtiu = false;
+
+    btnLike.addEventListener('click', () => {
+      if (!jaCurtiu) {
+        curtidas++;
+        countSpan.innerText = curtidas;
+        btnLike.style.background = 'var(--rosa-pink)';
+        btnLike.style.transform = 'scale(1.1)';
+        setTimeout(() => btnLike.style.transform = 'scale(1)', 200);
+        jaCurtiu = true;
       } else {
-        card.style.display = 'none';
+        curtidas--;
+        countSpan.innerText = curtidas;
+        btnLike.style.background = 'var(--rosa-medio)';
+        jaCurtiu = false;
       }
-    });
-
-    // Exibe mensagem caso nenhum card seja encontrado
-    gerenciarMensagemVazia(visiveis);
-  }
-
-  // Evento de clique nos botões de categoria
-  botoesFiltro.forEach(botao => {
-    botao.addEventListener('click', (e) => {
-      botoesFiltro.forEach(btn => btn.classList.remove('ativo'));
-      e.currentTarget.classList.add('ativo');
-
-      categoriaAtiva = e.currentTarget.getAttribute('data-filtro');
-      aplicarFiltros();
     });
   });
-
-  // Evento de digitação na barra de busca (com debounce)
-  if (campoBusca) {
-    campoBusca.addEventListener('input', (e) => {
-      termoBusca = e.target.value.toLowerCase().trim();
-      aplicarFiltros();
-    });
-  }
-
-  // Gerencia o bloco "Nenhuma matéria encontrada"
-  function gerenciarMensagemVazia(quantidadeVisivel) {
-    let msgVazia = document.getElementById('mensagemSemResultados');
-
-    if (quantidadeVisivel === 0) {
-      if (!msgVazia) {
-        msgVazia = document.createElement('div');
-        msgVazia.id = 'mensagemSemResultados';
-        msgVazia.className = 'sem-resultados';
-        msgVazia.innerHTML = `
-          <h3>Nenhum rastro encontrado! 🐾</h3>
-          <p>Tente buscar por outro animal ou selecione a opção "Todos".</p>
-        `;
-        gridMaterias.appendChild(msgVazia);
-      }
-    } else if (msgVazia) {
-      msgVazia.remove();
-    }
-  }
 }
 
-/**
-  2. CÁLCULO AUTOMÁTICO DE TEMPO DE LEITURA
- */
-function calcularTempoLeitura() {
-  const cards = document.querySelectorAll('.card-materia');
+// 3. EFEITO DE RASTRO DE GLITTER / ESTRELAS NO CURSOR (NOSTALGIA Y2K)
+function ativarGlitterCursor() {
+  const simbolos = ['✨', '💖', '★', '🌸'];
 
-  cards.forEach(card => {
-    const texto = card.querySelector('p').textContent;
-    const palavras = texto.trim().split(/\s+/).length;
-    // Média de leitura: 200 palavras por minuto
-    const minutos = Math.max(1, Math.ceil(palavras / 40)); 
+  document.addEventListener('mousemove', (e) => {
+    // Criar elemento esporadicamente para não travar a tela
+    if (Math.random() > 0.85) {
+      const el = document.createElement('span');
+      el.innerText = simbolos[Math.floor(Math.random() * simbolos.length)];
+      el.style.position = 'fixed';
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      el.style.fontSize = (Math.random() * 12 + 10) + 'px';
+      el.style.pointerEvents = 'none';
+      el.style.zIndex = '9999';
+      el.style.opacity = '1';
+      el.style.transition = 'all 0.8s ease-out';
 
-    const elementoTempo = card.querySelector('.tempo-leitura');
-    if (elementoTempo) {
-      elementoTempo.textContent = `⏱️ ${minutos} min de leitura`;
+      document.body.appendChild(el);
+
+      setTimeout(() => {
+        el.style.top = (e.clientY + 20) + 'px';
+        el.style.opacity = '0';
+      }, 50);
+
+      setTimeout(() => {
+        el.remove();
+      }, 850);
     }
   });
 }
 
-/**
-  3. EFEITOS VISUAIS E SCROLL
- */
-function initEfeitosScroll() {
-  // Animação leve de entrada dos cards ao carregar
-  const cards = document.querySelectorAll('.card-materia');
-  cards.forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'all 0.4s ease-out';
+// 4. PLAYER DE MÚSICA SIMULADO NA SIDEBAR
+function inicializarPlaylistInterativa() {
+  const musicas = document.querySelectorAll('.playlist-list li');
 
-    setTimeout(() => {
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
-    }, 100 * index);
+  musicas.forEach((musica) => {
+    musica.style.cursor = 'pointer';
+    musica.title = 'Clique para tocar o trecho';
+
+    musica.addEventListener('click', () => {
+      // Remove destaque dos outros
+      musicas.forEach(m => m.style.color = 'inherit');
+      
+      // Destaque para a tocando atualmente
+      musica.style.color = 'var(--rosa-pink)';
+      
+      const nomeMusica = musica.innerText;
+      alert(`🎧 Tocando agora no seu MP3 Player:\n${nomeMusica}`);
+    });
   });
 }
+
+// EXECUTA AS FUNÇÕES QUANDO O DOCUMENTO CARREGAR
+document.addEventListener('DOMContentLoaded', () => {
+  inicializarBotoesCurtir();
+  ativarGlitterCursor();
+  inicializarPlaylistInterativa();
+});
