@@ -180,10 +180,11 @@ header p {
 
 .post-image {
   width: 100%;
-  max-height: 380px;
-  object-fit: cover;
+  max-height: 420px;
+  object-fit: contain; /* Exibe a imagem inteira sem cortar */
+  background-color: var(--rosa-claro); /* Preenche as bordas que sobrarem */
   border-radius: 14px;
-  border: 3px solid var(--rosa-claro);
+  border: 3px solid var(--rosa-chiclete);
   margin: 15px 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
