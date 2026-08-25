@@ -331,16 +331,19 @@
   </script>
 
 </body>
-  <script src="script.js"></script>
-<div class="widget">
-  <h3>🎧 Trilha Sonora 2000s</h3>
+ <div class="widget">
+  <h3>🎧 Tocando Agora</h3>
   
-  <!-- Link online direto para o áudio tocar sem precisar baixar nada -->
-  <audio id="musica-britney" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
-  <button id="btn-player" class="btn-pink" onclick="tocarOuPausar()" style="width: 100%; margin-bottom: 15px;">
-    ▶️ Tocar Gimme More - Britney
-  </button>
+  <!-- Player oficial da Britney Spears no Spotify -->
+  <iframe style="border-radius:12px; margin-bottom: 15px;" 
+    src="https://open.spotify.com/embed/track/6RsnKGOCmGToN7hEzB7l4m?utm_source=generator" 
+    width="100%" 
+    height="152" 
+    frameBorder="0" 
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
 
   <ul class="playlist-list">
     <li>🎵 Britney Spears - Gimme More</li>
@@ -348,20 +351,3 @@
     <li>🎵 Lindsay Lohan - Ultimate</li>
   </ul>
 </div>
-
-<script>
-  function tocarOuPausar() {
-    var audio = document.getElementById('musica-britney');
-    var botao = document.getElementById('btn-player');
-
-    if (audio.paused) {
-      audio.play();
-      botao.innerText = '⏸️ Pausar Música';
-      botao.style.backgroundColor = 'var(--rosa-chiclete)';
-    } else {
-      audio.pause();
-      botao.innerText = '▶️ Tocar Gimme More - Britney';
-      botao.style.backgroundColor = 'var(--rosa-pink)';
-    }
-  }
-</script>
