@@ -334,8 +334,8 @@
 <div class="widget">
   <h3>🎧 Trilha Sonora 2000s</h3>
   
-  <!-- Aponta direto para o arquivo gimme-more.mp3 que está na sua pasta -->
-  <audio id="musica-britney" src="gimme-more.mp3"></audio>
+  <!-- Garanta que o nome do arquivo na sua pasta seja exatamente gimme-more.mp3 -->
+  <audio id="musica-britney" src="gimme-more.mp3" preload="auto"></audio>
 
   <button id="btn-player" class="btn-pink" onclick="tocarOuPausar()" style="width: 100%; margin-bottom: 15px;">
     ▶️ Tocar Gimme More - Britney
@@ -354,12 +354,19 @@
     var botao = document.getElementById('btn-player');
 
     if (audio.paused) {
-      audio.play().then(() => {
-        botao.innerText = '⏸️ Pausar: Gimme More';
-        botao.style.backgroundColor = 'var(--rosa-chiclete)';
-      }).catch(function(erro) {
-        alert('Dê um clique na página primeiro e tente apertar o play novamente!');
-      });
+      // Tenta tocar o áudio
+      var playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          // Deu certo! A música começou a tocar
+          botao.innerText = '⏸️ Pausar: Gimme More';
+          botao.style.backgroundColor = 'var(--rosa-chiclete)';
+        }).catch(function(erro) {
+          // Se der erro, avisa exatamente o motivo real
+          alert('Erro ao carregar o som! Verifique se o arquivo "gimme-more.mp3" está exatamente com esse nome dentro da mesma pasta do index.html');
+        });
+      }
     } else {
       audio.pause();
       botao.innerText = '▶️ Tocar Gimme More - Britney';
