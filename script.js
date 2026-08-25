@@ -142,3 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
   ativarGlitterCursor();
   inicializarPlaylistInterativa();
 });
+// 5. CONTROLE DO PLAYER DE ÁUDIO DA BRITNEY
+function alternarMusica() {
+  const audio = document.getElementById('musica-britney');
+  const botao = document.getElementById('btn-player');
+
+  if (audio.paused) {
+    audio.play();
+    botao.innerText = '⏸️ Pausar: Gimme More';
+    botao.style.backgroundColor = 'var(--rosa-chiclete)';
+  } else {
+    audio.pause();
+    botao.innerText = '▶️ Tocar Gimme More - Britney';
+    botao.style.backgroundColor = 'var(--rosa-pink)';
+  }
+}
