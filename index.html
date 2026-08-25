@@ -332,28 +332,23 @@
 
 </body>
   <script src="script.js"></script>
-<sidebar>
-  <div class="widget">
-    <h3>🎧 Trilha Sonora 2000s</h3>
-    
-    <!-- Áudio de teste funcional -->
-    <!-- Subtituindo o link de teste pelo arquivo da pasta -->
-<audio id="musica-britney" src="gimme-more.mp3"></audio>
+<div class="widget">
+  <h3>🎧 Trilha Sonora 2000s</h3>
+  
+  <!-- Link online direto para o áudio tocar sem precisar baixar nada -->
+  <audio id="musica-britney" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
-    <!-- Botão com o comando direto nele -->
-    <button id="btn-player" class="btn-pink" onclick="tocarOuPausar()" style="width: 100%; margin-bottom: 15px;">
-      ▶️ Tocar Gimme More - Britney
-    </button>
+  <button id="btn-player" class="btn-pink" onclick="tocarOuPausar()" style="width: 100%; margin-bottom: 15px;">
+    ▶️ Tocar Gimme More - Britney
+  </button>
 
-    <ul class="playlist-list">
-      <li>🎵 Britney Spears - Gimme More</li>
-      <li>🎵 Vanessa Carlton - A Thousand Miles</li>
-      <li>🎵 Lindsay Lohan - Ultimate</li>
-    </ul>
-  </div>
-</sidebar>
+  <ul class="playlist-list">
+    <li>🎵 Britney Spears - Gimme More</li>
+    <li>🎵 Vanessa Carlton - A Thousand Miles</li>
+    <li>🎵 Lindsay Lohan - Ultimate</li>
+  </ul>
+</div>
 
-<!-- Código de comando direto -->
 <script>
   function tocarOuPausar() {
     var audio = document.getElementById('musica-britney');
@@ -362,9 +357,11 @@
     if (audio.paused) {
       audio.play();
       botao.innerText = '⏸️ Pausar Música';
+      botao.style.backgroundColor = 'var(--rosa-chiclete)';
     } else {
       audio.pause();
       botao.innerText = '▶️ Tocar Gimme More - Britney';
+      botao.style.backgroundColor = 'var(--rosa-pink)';
     }
   }
 </script>
